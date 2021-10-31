@@ -25,7 +25,7 @@ const AddSpotForm = () => {
         const newSpot = { name, description, cost, img, star, country, duration }
 
         //POST 
-        fetch("http://creepy-catacombs-00703.herokuapp.com/location", {
+        fetch("https://creepy-catacombs-00703.herokuapp.com/location", {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

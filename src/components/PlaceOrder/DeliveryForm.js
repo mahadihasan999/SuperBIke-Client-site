@@ -1,6 +1,6 @@
 import { useHistory } from 'react-router-dom';
 import useFetch from '../../hooks/useFetch';
-import React from 'react';
+import React, { setState } from 'react';
 import { useForm } from 'react-hook-form';
 import useAuth from '../../hooks/useAuth';
 import swal from 'sweetalert';
@@ -10,9 +10,11 @@ const DeliveryForm = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const { user } = useAuth();
     const history = useHistory();
+
+
     const onSubmit = data => {
 
-        fetch('http://creepy-catacombs-00703.herokuapp.com/orders', {
+        fetch('https://creepy-catacombs-00703.herokuapp.com/orders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -26,15 +28,14 @@ const DeliveryForm = () => {
                     reset();
                 }
             })
-        history.push('/order-successful');
+        history.push('/');
         swal("Success", "Pending Admin Approval!", "Deleted");
     };
     return (
-        <div className="flex flex-col mt-20  p-5" >
+        <div className="flex flex-col p-5" >
             <h1 className="text-2xl poppins pb-4 border-b border-gray-500 text-center text-gray-700">Submit Your Info</h1>
             <div className="flex flex-wrap">
                 <form onSubmit={handleSubmit(onSubmit)} class="max-w-lg">
-
                     <div class="flex flex-wrap ">
                         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
@@ -64,6 +65,9 @@ const DeliveryForm = () => {
                     </div>
                     <button className="w-full px-6 py-3 rounded-lg bg-primary text-white poppins ring-red-300 focus:ring-4 transition duration-500">Place order</button>
                 </form>
+                <div>
+
+                </div>
             </div>
         </div>
     );

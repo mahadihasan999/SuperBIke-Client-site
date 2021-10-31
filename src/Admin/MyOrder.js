@@ -17,7 +17,7 @@ const MyOrder = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure want to Delete')
         if (proceed) {
-            const url = `http://creepy-catacombs-00703.herokuapp.com/orders/${id}`;
+            const url = `https://creepy-catacombs-00703.herokuapp.com/orders/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })
@@ -47,6 +47,12 @@ const MyOrder = () => {
                                 <thead className="bg-primary poppins">
                                     <tr>
                                         <th scope="col" className="text-xs font-medium text-white px-6 py-3 text-left uppercase tracking-wider">
+                                            Spot Name
+                                        </th>
+                                        <th scope="col" className="text-xs font-medium text-white px-6 py-3 text-left uppercase tracking-wider">
+                                            Duration
+                                        </th>
+                                        <th scope="col" className="text-xs font-medium text-white px-6 py-3 text-left uppercase tracking-wider">
                                             Name
                                         </th>
                                         <th scope="col" className="text-xs font-medium text-white px-6 py-3 text-left uppercase tracking-wider">
@@ -65,6 +71,12 @@ const MyOrder = () => {
                                     {orders?.filter(item => item.name === user.displayName)?.map((item) =>
                                     (
                                         <tr className="bg-white border-b poppins" key={item._id}>
+                                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                                {item.spotName}
+                                            </td>
+                                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                                {item.duration}
+                                            </td>
                                             <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                                 {item.name}
                                             </td>

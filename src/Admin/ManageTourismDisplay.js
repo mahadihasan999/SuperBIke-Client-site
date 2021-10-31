@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 // eslint-disable-next-line no-unused-vars
 import swal from 'sweetalert';
 import useOrder from '../hooks/useOrder';
+import Back from '../routes/Back';
 import Heading from './Heading';
 
 const ManageTourismDisplay = () => {
@@ -14,7 +15,7 @@ const ManageTourismDisplay = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure want to Delete')
         if (proceed) {
-            const url = `http://creepy-catacombs-00703.herokuapp.com/orders/${id}`;
+            const url = `https://creepy-catacombs-00703.herokuapp.com/orders/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })
@@ -30,6 +31,7 @@ const ManageTourismDisplay = () => {
     }
     return (
         <div>
+
             {/* heading   */}
             <Heading text="Manage All Orders" />
             <h2 className="text-center">Total {orders.length} Orders Found</h2>
@@ -44,6 +46,9 @@ const ManageTourismDisplay = () => {
                                     <tr>
                                         <th scope="col" className="text-xs font-medium text-white px-6 py-3 text-left uppercase tracking-wider">
                                             Booking Spot
+                                        </th>
+                                        <th scope="col" className="text-xs font-medium text-white px-6 py-3 text-left uppercase tracking-wider">
+                                            Duration
                                         </th>
                                         <th scope="col" className="text-xs font-medium text-white px-6 py-3 text-left uppercase tracking-wider">
                                             Travller Name
@@ -65,6 +70,9 @@ const ManageTourismDisplay = () => {
                                         <tr className="bg-white border-b poppins" key={item._id}>
                                             <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                                 {item.spotName}
+                                            </td>
+                                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                                {item.duration}
                                             </td>
                                             <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                                 {item.name}

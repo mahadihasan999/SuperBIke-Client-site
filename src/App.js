@@ -14,6 +14,7 @@ import HomeScreen from './DisplayView/HomeScreen';
 import OrderSuccessfulScreen from './DisplayView/OrderSuccessfulScreen';
 import SignInScreen from './DisplayView/SignInScreen';
 import SignUpScreen from './DisplayView/SignUpScreen';
+import MyOrder from './Admin/MyOrder';
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
               <PrivateRoute exact path="/orders"><DeliveryForm /></PrivateRoute>
               <PrivateRoute exact path="/order-successful"><OrderSuccessfulScreen /></PrivateRoute>
               <PrivateRoute exact path="/admin"><Admin /></PrivateRoute>
+              <PrivateRoute exact path="/myOrder"><MyOrder /></PrivateRoute>
               <Route path="*"><ErrorScreen /></Route>
             </Switch>
           </DeliveryProvider>
