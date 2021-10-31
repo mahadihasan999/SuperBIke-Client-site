@@ -5,7 +5,7 @@ import swal from 'sweetalert';
 import Button from '../components/Form/Button';
 import Label from '../components/Form/Label';
 import TextField from '../components/Form/TextField';
-import useAuth from '../hooks/useAuth';
+import useFetch from '../hooks/useFetch';
 
 const AddSpotForm = () => {
     const [name, setTitle] = useState('')
@@ -16,7 +16,7 @@ const AddSpotForm = () => {
     const [country, setCountry] = useState('')
     const [star, setStar] = useState('')
     const history = useHistory()
-    const location = useAuth()
+    const location = useFetch()
 
 
     //post to database 
@@ -34,10 +34,10 @@ const AddSpotForm = () => {
         }).then((res) => res.json())
             .then(data => {
                 if (data.acknowledged) {
-                    swal("Spot Added!", "Spot is added to the store!", "success");
-                    history.push('/');
+                    swal("Spot Added!", "Spot is added to the database!", "success");
+                    history.push('admin/add');
                 } else {
-                    swal("Unsuccessful !", "Spot is not added to the store!", "error");
+                    swal("Unsuccessful !", "Spot is not added to the database!", "error");
                 }
             })
     }
@@ -45,7 +45,13 @@ const AddSpotForm = () => {
 
     return (
         <>
-            <h1> </h1>
+            <div>
+                {
+                    location.map(locate =>
+                        <p>{locate.length}</p>
+                    )
+                }
+            </div>
             <form className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-10 mt-6" onSubmit={handleSubmit}>
                 {/* title and description  */}
                 <div className="flex flex-col space-y-4">

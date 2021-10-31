@@ -11,7 +11,7 @@ const AboutUs = () => {
 
             {/* about us cards  */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-8">
-                {location.slice(7, 11).map(item => (
+                {location.slice(7, 10).map(item => (
                     <AboutItem key={item.id} {...item} />
                 ))}
             </div>

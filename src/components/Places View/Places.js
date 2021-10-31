@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import useFetch from '../../hooks/useFetch';
 import SpotItem from './SpotItem';
 import Skeleton from './Skeleton';
+import Spinner from '../../Spinner/Spinner';
 
 const Places = () => {
     const [loading, setLoading] = useState(false)
@@ -25,7 +26,7 @@ const Places = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mt-12">
                 {location?.slice(0, 8).map(item => (
-                    loading ? <Skeleton key={item._id} /> : <SpotItem key={item._id} {...item} />
+                    loading ? <Spinner key={item._id} /> : <SpotItem key={item._id} {...item} />
                 ))}
             </div>
         </section>
