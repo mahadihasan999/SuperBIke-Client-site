@@ -35,7 +35,7 @@ const AddSpotForm = () => {
             .then(data => {
                 if (data.acknowledged) {
                     swal("Spot Added!", "Spot is added to the database!", "success");
-                    history.push('admin/add');
+                    history.push('/');
                 } else {
                     swal("Unsuccessful !", "Spot is not added to the database!", "error");
                 }
@@ -45,13 +45,7 @@ const AddSpotForm = () => {
 
     return (
         <>
-            <div>
-                {
-                    location.map(locate =>
-                        <p>{locate.length}</p>
-                    )
-                }
-            </div>
+
             <form className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-10 mt-6" onSubmit={handleSubmit}>
                 {/* title and description  */}
                 <div className="flex flex-col space-y-4">
@@ -77,7 +71,7 @@ const AddSpotForm = () => {
 
                 </div>
 
-                {/* price , image , type  */}
+                {/* price , image , duration, spotname*/}
                 <div className="flex flex-col space-y-4">
                     {/* price  */}
                     <Label htmlFor="cost" text="Cost" />
@@ -94,7 +88,7 @@ const AddSpotForm = () => {
                         type="text"
                         value={img}
                         onChange={e => setImg(e.target.value)} required />
-                    {/* price  */}
+                    {/* country*/}
                     <Label htmlFor="country" text="Country Name" />
                     <TextField
                         id="country"
@@ -102,7 +96,7 @@ const AddSpotForm = () => {
                         value={country}
                         onChange={e => setCountry(e.target.value)}
                         required />
-                    {/* image url  */}
+                    {/* ranking  */}
                     <Label htmlFor="star" text="Ranking" />
                     <TextField
                         id="star"
@@ -110,7 +104,7 @@ const AddSpotForm = () => {
                         value={star}
                         onChange={e => setStar(e.target.value)} required />
 
-                    {/* description  */}
+                    {/* duration  */}
                     <Label htmlFor="duration" text="Styaing Time (ex: 3days-4days)" />
                     <TextField
                         id="duration"

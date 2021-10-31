@@ -2,14 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 // eslint-disable-next-line no-unused-vars
 import swal from 'sweetalert'
-import Button from '../components/Form/Button'
 import useAuth from '../hooks/useAuth';
+
 const EditSpotForm = () => {
-    const { user } = useAuth();
     const [users, setUser] = useState({});
     const { id } = useParams();
     const history = useHistory();
-
+    const { user } = useAuth();
     useEffect(() => {
         fetch(`https://creepy-catacombs-00703.herokuapp.com/orders/${id}`)
             .then(res => res.json())
@@ -33,7 +32,7 @@ const EditSpotForm = () => {
         e.preventDefault();
         const spotName = users.spotName;
         const duration = users.duration;
-        const name = users.name;
+        const name = user.displayName;
         const email = users.email;
         const phone = users.phone;
 
@@ -94,15 +93,22 @@ const EditSpotForm = () => {
                             (Write your currennt user name)
                         </label>
                         <input
-
+                            defaultValue={user.displayName}
                             name="name"
-                            value={users.name || " "}
+                            value={users.name}
                             onChange={handleUpdate}
                             required
-
                             class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Name" />
-
                     </div>
+
+
+                    {/* <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                            Your Name
+                        </label>
+                        <input defaultValue={user.displayName} value={users.name} onChange={handleUpdate} class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-3 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Name" />
+
+                    </div> */}
                     <div class="w-full md:w-1/2 px-3">
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                             Email

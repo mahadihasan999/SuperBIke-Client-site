@@ -1,5 +1,6 @@
 
 import { AiOutlineDelete } from 'react-icons/ai';
+import { FcApproval, FcDisapprove } from 'react-icons/fc';
 import { FiEdit } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 // eslint-disable-next-line no-unused-vars
@@ -7,10 +8,10 @@ import swal from 'sweetalert';
 import useOrder from '../hooks/useOrder';
 import Back from '../routes/Back';
 import Heading from './Heading';
-
+import { useHistory } from 'react-router-dom';
 const ManageTourismDisplay = () => {
     const [orders, setOrder] = useOrder()
-
+    const history = useHistory()
     //handle delete 
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure want to Delete')
@@ -29,13 +30,18 @@ const ManageTourismDisplay = () => {
         }
 
     }
+    const handleRoute = () => {
+        history.push('/add/manage-product');
+
+        swal("Success", "User Approve", "Approval")
+    }
     return (
         <div>
 
             {/* heading   */}
             <Heading text="Manage All Orders" />
             <h2 className="text-center">Total {orders.length} Orders Found</h2>
-            {/* product s  */}
+            {/* All travel places  */}
 
             <div className="flex flex-col my-8">
                 <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -84,8 +90,10 @@ const ManageTourismDisplay = () => {
                                                 {item.phone}
                                             </td>
                                             <td className="px-6 py-4 whitespace-nowrap flex flex-col h-24 items-center justify-center">
+                                                <Link to={`/admin/manage-prodcut/`}>
+                                                    <FcApproval className="cursor-pointer text-2xl text-green-600" onClick={handleRoute} />
+                                                </Link>
                                                 <div className="flex items-center justify-center space-x-3">
-
                                                     <AiOutlineDelete className="cursor-pointer text-2xl text-red-600" onClick={() => handleDelete(item._id)} />
                                                 </div>
                                             </td>

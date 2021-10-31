@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { BsCart2 } from 'react-icons/bs';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import swal from 'sweetalert';
 import { useOrder } from '../contexts/OrderProvider';
 import useFetch from '../hooks/useFetch';
 import Back from '../routes/Back';
 import Rating from 'react-rating';
 import Spinner from '../Spinner/Spinner';
-import OrderCard from '../components/PlaceOrder/OrderCard';
-import DeliveryForm from '../components/PlaceOrder/DeliveryForm';
 import useAuth from '../hooks/useAuth';
 import { useForm } from 'react-hook-form';
 
@@ -85,20 +83,6 @@ const SpotDetailScreen = () => {
                                     <p className="text-center md:text-left lg:text-left text-2xl poppins text-gray-500 leading-relaxed select-none">৳{spot.cost}</p>
 
 
-                                    <div className="mt-8 flex items-center justify-center md:justify-start lg:justify-start">
-                                        <button className="flex items-center space-x-3 bg-primary px-6 py-3 text-white poppins rounded-full ring-red-300 focus:outline-none focus:ring-4 transform transition duration-700 hover:scale-105"
-
-                                            onClick={() => {
-                                                handleOrder(spot);
-                                                // history.push('/orders')
-                                                // setOrder()
-                                                swal("Success", "Pending Admin Approval!", "Deleted");
-                                            }}>
-                                            <BsCart2 className="text-xl" />
-                                            <span>Add to Choose</span>
-                                        </button>
-                                    </div>
-
 
 
                                 </div>
@@ -140,7 +124,7 @@ const SpotDetailScreen = () => {
                                                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                                                             Email
                                                         </label>
-                                                        <input  {...register("email", { required: true })} class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Email" />
+                                                        <input defaultValue={user.email} {...register("email", { required: true })} class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Email" />
                                                     </div>
                                                 </div>
                                                 <div class="flex flex-wrap ">
