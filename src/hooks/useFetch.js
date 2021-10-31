@@ -4,7 +4,7 @@ const useFetch = () => {
     const [location, setLocation] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/location')
+        fetch('http://creepy-catacombs-00703.herokuapp.com/location')
             .then(res => res.json())
             .then(data => setLocation(data.location))
 

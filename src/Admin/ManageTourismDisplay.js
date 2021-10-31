@@ -14,7 +14,7 @@ const ManageTourismDisplay = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure want to Delete')
         if (proceed) {
-            const url = `http://localhost:5000/orders/${id}`;
+            const url = `http://creepy-catacombs-00703.herokuapp.com/orders/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })

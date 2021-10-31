@@ -2,19 +2,22 @@
 import { AiOutlineDelete } from 'react-icons/ai';
 import { FiEdit } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
+
 // eslint-disable-next-line no-unused-vars
 import swal from 'sweetalert';
 import useOrder from '../hooks/useOrder'
 import Heading from './Heading';
 import useAuth from '../hooks/useAuth';
 const MyOrder = () => {
+
     const [orders, setOrder] = useOrder()
     const { user } = useAuth();
     //handle delete 
+
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure want to Delete')
         if (proceed) {
-            const url = `http://localhost:5000/orders/${id}`;
+            const url = `http://creepy-catacombs-00703.herokuapp.com/orders/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })
@@ -26,6 +29,8 @@ const MyOrder = () => {
                     setOrder(remainingUsers)
                 })
         }
+
+
 
     }
     return (

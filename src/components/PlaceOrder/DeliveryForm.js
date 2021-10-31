@@ -12,7 +12,7 @@ const DeliveryForm = () => {
     const history = useHistory();
     const onSubmit = data => {
 
-        fetch('http://localhost:5000/orders', {
+        fetch('http://creepy-catacombs-00703.herokuapp.com/orders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

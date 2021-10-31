@@ -11,7 +11,7 @@ const EditSpotForm = () => {
     const history = useHistory();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/orders/${id}`)
+        fetch(`http://creepy-catacombs-00703.herokuapp.com/orders/${id}`)
             .then(res => res.json())
             .then(data => setUser(data));
     }, [id])
@@ -38,7 +38,7 @@ const EditSpotForm = () => {
         const updateSpot = { name, email, phone }
 
         //update 
-        fetch(`http://localhost:5000/orders/${id}`, {
+        fetch(`http://creepy-catacombs-00703.herokuapp.com/orders/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',
