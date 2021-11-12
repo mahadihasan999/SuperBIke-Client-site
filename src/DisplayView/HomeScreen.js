@@ -1,16 +1,18 @@
 import React from 'react';
 import AboutUs from '../components/About/AboutUs';
-import Places from '../components/Places View/Places';
+import Products from '../components/DisplayProducts/Products';
 import Footer from '../components/Footer/Footer';
 import Banner from '../components/Header/Banner';
 import Subscribe from '../components/Subscribe/Subscribe';
+import Review from '../components/Review/Review';
 
 const HomeScreen = () => {
     return (
         <>
             <Banner />
-            <Places />
+            <Products />
             <AboutUs />
+            <Review />
             <Subscribe />
             <Footer />
         </>

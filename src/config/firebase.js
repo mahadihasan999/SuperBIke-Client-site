@@ -1,12 +1,12 @@
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyD1FQQRiP-VN7k2iDOoyTe4S2YGd2ojFKM",
-    authDomain: "new1-af780.firebaseapp.com",
-    projectId: "new1-af780",
-    storageBucket: "new1-af780.appspot.com",
-    messagingSenderId: "572990115803",
-    appId: "1:572990115803:web:72c04bfc346856b37ca1fe"
+    apiKey: "AIzaSyCvTO8b1f_z_AINfFUPanwQhjxzIrYMIZc",
+    authDomain: "super-bike-bd.firebaseapp.com",
+    projectId: "super-bike-bd",
+    storageBucket: "super-bike-bd.appspot.com",
+    messagingSenderId: "639071071475",
+    appId: "1:639071071475:web:cb8c8c1f1f2708689a1b86"
 };
 
 // Initialize Firebase

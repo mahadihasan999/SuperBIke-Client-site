@@ -24,31 +24,27 @@ const Navbar = () => {
     //change header by scrolling
     window.addEventListener('scroll', onChangeHeader)
     return (
-        <header className={changeHeader ? "bg-white fixed z-50 top-0 left-0 w-full shadow-md transition duration-500" : "bg-transparent fixed z-50 top-0 left-0 w-full transition duration-500"}>
+        <header className={changeHeader ? " subscribe fixed z-50 top-0 left-0 w-full shadow-md transition duration-500" : "bg-transparent fixed z-50 top-0 left-0 w-full transition duration-500"}>
             <nav className="flex items-center max-w-screen-xl mx-auto px-6 py-3">
                 {/* left  */}
                 <div className="flex flex-grow">
-                    <img className="w-40 cursor-pointer" src={logo} alt="logo" onClick={() => history.push('/')} />
+                    <img className="w-40 h-8 cursor-pointer" src={logo} alt="logo" onClick={() => history.push('/')} />
                 </div>
                 {/* right  */}
                 {user.displayName ? (
                     <>
                         <div className="flex items-center justify-end space-x-4">
-                            <NavLink to="/" className="text-gray-600">Home</NavLink>
-                            <NavLink to="/admin" className="text-gray-600">Dashboard</NavLink>
-                            {/* <div className="relative flex cursor-pointer" onClick={() => history.push('/orders')}>
-                                <span className="bg-primary w-6 h-6 rounded-full flex items-center justify-center text-white poppins absolute -right-2 -top-2">{order.length}</span> */}
-                            {/* <BsCart2 className="cursor-pointer w-6 h-6 text-gray-700" /> */}
-                            {/* </div> */}
+                            <NavLink to="/explore" className="text-white">Explore</NavLink>
+                            <NavLink to="/dashboard" className="text-white">Dashboard</NavLink>
                             <img src={user?.photoURL} alt={user.displayName} className="w-10 h-10 rounded-full" />
-                            <p className="text-gray-700 poppins hidden md:block lg:block">{user.displayName}</p>
-                            <FiLogOut className="cursor-pointer w-6 h-6 text-gray-700" onClick={signOutUser} />
+                            <p className="poppins hidden md:block lg:block">{user.displayName}</p>
+                            <FiLogOut className="cursor-pointer w-6 h-6 text-white-700" onClick={signOutUser} />
                         </div>
                     </>
                 ) : (
                     <>
                         <div className="flex items-center justify-end space-x-6">
-                            <button className="poppins" onClick={() => history.push('/signin')}>Sign In</button>
+                            <button className="poppins text-white  " onClick={() => history.push('/signin')}>Sign In</button>
                             <button className=" bg-primary px-6 py-3 text-white poppins rounded-full ring-red-300 focus:outline-none focus:ring-4 transform transition duration-700 hover:scale-105" onClick={() => history.push('/signup')}>Sign Up</button>
                         </div>
                     </>

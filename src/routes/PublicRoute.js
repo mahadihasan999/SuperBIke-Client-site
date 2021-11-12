@@ -8,7 +8,7 @@ const PublicRoute = ({ children, ...rest }) => {
     return (
         <Route
             {...rest}
-            render={({ location }) =>
+            render={({ products }) =>
                 !user.displayName ? (
                     children
                 ) : (

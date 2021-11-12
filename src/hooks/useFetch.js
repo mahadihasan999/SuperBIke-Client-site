@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
 
 const useFetch = () => {
-    const [location, setLocation] = useState([])
+    const [products, setProducts] = useState([])
 
     useEffect(() => {
-        fetch('https://creepy-catacombs-00703.herokuapp.com/location')
+        fetch('http://localhost:5000/products')
             .then(res => res.json())
-            .then(data => setLocation(data.location))
+            .then(data => setProducts(data.products))
 
-    }, [location])
-    return [location, setLocation]
+    }, [products])
+    return [products, setProducts]
 }
 
 export default useFetch

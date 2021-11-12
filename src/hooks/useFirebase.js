@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, getIdToken, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { useEffect, useState } from 'react';
 import { useHistory } from "react-router-dom";
 import swal from 'sweetalert';
@@ -9,24 +9,70 @@ import initializeAuthentication from '../config/firebase';
 initializeAuthentication()
 
 const useFirebase = () => {
-    const [user,setUser] = useState({});
+    const [user, setUser] = useState({});
     const auth = getAuth();
     const history = useHistory();
+    const [admin, setAdmin] = useState(false);
+    const [token, setToken] = useState('');
+
 
     //on State Change 
     useEffect(() => {
-        onAuthStateChanged(auth,user => {
+        onAuthStateChanged(auth, user => {
             if (user) {
                 setUser(user)
             }
         })
-    },[auth])
+    }, [auth])
+
+
+    // observer user state
+    useEffect(() => {
+        const unsubscribed = onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setUser(user);
+                getIdToken(user)
+                    .then(idToken => {
+                        setToken(idToken);
+                    })
+            } else {
+                setUser({})
+            }
+
+        });
+        return () => unsubscribed;
+    }, [])
+
+    const saveUser = (email, displayName, method) => {
+        const user = { email, displayName };
+        fetch('http://localhost:5000/users', {
+            method: method,
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then()
+    }
+
+
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/users/${user.email}`)
+            .then(res => res.json())
+            .then(data => setAdmin(data.admin))
+    }, [user.email])
 
     //sign up functionality
     const signUpUser = (email, password, name, image) => {
         createUserWithEmailAndPassword(auth, email, password)
             .then((res) => {
                 setUser(res.user)
+                const newUser = { email, displayName: name };
+                setUser(newUser);
+                // save user to the database
+                saveUser(email, name, 'POST');
+
                 updateProfile(auth.currentUser, {
                     displayName: name,
                     photoURL: image
@@ -40,12 +86,13 @@ const useFirebase = () => {
 
     //sign in functionality
     const signInUser = (email, password) => {
-        signInWithEmailAndPassword(auth, email , password)
-        .then(res => {
-            setUser(res.user);
-            swal("Sign in Successful!", "Welcome back !", "info")
-            history.push('/');
-        })
+        signInWithEmailAndPassword(auth, email, password)
+            .then(res => {
+
+                setUser(res.user);
+                swal("Sign in Successful!", "Welcome back !", "info")
+                history.push('/');
+            })
             .catch(err => swal("Something went wrong!", `${err.message}`, "error"))
     }
 
@@ -54,11 +101,12 @@ const useFirebase = () => {
     const signInWithGoogle = () => {
         const googleProvider = new GoogleAuthProvider();
         signInWithPopup(auth, googleProvider)
-        .then(res => {
-            setUser(res.user);
-            swal("Good job!", "Account has been created!", "success");
-            history.push('/');
-        }).catch(err => console.log(err.message))
+            .then(res => {
+                setUser(res.user);
+                saveUser(user.email, user.displayName, 'PUT');
+                swal("Good job!", "Account has been created!", "success");
+                history.push('/');
+            }).catch(err => console.log(err.message))
     }
 
     // sign out 
@@ -74,6 +122,8 @@ const useFirebase = () => {
 
     return {
         user,
+        admin,
+        token,
         signUpUser,
         signInUser,
         signOutUser,
