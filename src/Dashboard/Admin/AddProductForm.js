@@ -5,7 +5,7 @@ import swal from 'sweetalert';
 import Button from '../../components/Form/Button';
 import Label from '../../components/Form/Label';
 import TextField from '../../components/Form/TextField';
-import useFetch from '../../hooks/useFetch';
+
 
 const AddProductForm = () => {
     const [name, setTitle] = useState('')
@@ -14,7 +14,7 @@ const AddProductForm = () => {
     const [img, setImg] = useState('')
     const [rating, setStar] = useState('')
     const history = useHistory()
-    const { products } = useFetch()
+
 
 
     //post to database 
@@ -23,7 +23,7 @@ const AddProductForm = () => {
         const newSpot = { name, description, price, img, rating }
 
         //POST 
-        fetch("http://localhost:5000/products", {
+        fetch("https://aqueous-thicket-07877.herokuapp.com/products", {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
-import { BsCart2 } from 'react-icons/bs';
 import { FiLogOut } from 'react-icons/fi';
 import { NavLink, useHistory } from "react-router-dom";
 import logo from '../../assets/logo2.png';
-import { useOrder } from '../../contexts/OrderProvider';
 import useAuth from '../../hooks/useAuth';
 
 const Navbar = () => {
     const [changeHeader, setChangeHeader] = useState(false)
     const history = useHistory();
     const { user, signOutUser } = useAuth();
-    const { order } = useOrder();
+
 
     //header change function 
     const onChangeHeader = () => {
@@ -24,11 +22,11 @@ const Navbar = () => {
     //change header by scrolling
     window.addEventListener('scroll', onChangeHeader)
     return (
-        <header className={changeHeader ? " subscribe fixed z-50 top-0 left-0 w-full shadow-md transition duration-500" : "bg-transparent fixed z-50 top-0 left-0 w-full transition duration-500"}>
-            <nav className="flex items-center max-w-screen-xl mx-auto px-6 py-3">
+        <header className={changeHeader ? "subscribe fixed z-50 top-0 left-0 w-full shadow-md transition duration-500" : "bg-transparent fixed z-50 top-0 left-0 w-full transition duration-500"}>
+            <nav className="flex items-center max-w-screen-xl mx-auto px-6 py-1">
                 {/* left  */}
                 <div className="flex flex-grow">
-                    <img className="w-40 h-8 cursor-pointer" src={logo} alt="logo" onClick={() => history.push('/')} />
+                    <img className="w-40 h-12 cursor-pointer" src={logo} alt="logo" onClick={() => history.push('/')} />
                 </div>
                 {/* right  */}
                 {user.displayName ? (

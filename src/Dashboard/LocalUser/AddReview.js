@@ -5,41 +5,38 @@ import swal from 'sweetalert';
 import Button from '../../components/Form/Button';
 import Label from '../../components/Form/Label';
 import TextField from '../../components/Form/TextField';
-import useAuth from '../../hooks/useAuth';
-import useFetch from '../../hooks/useFetch';
 
 const AddReview = () => {
     const [customerName, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [rating, setStar] = useState('')
     const history = useHistory()
-    const { user } = useAuth()
+
     // const products = useFetch()
 
 
     //post to database ,
     const handleSubmit = e => {
         e.preventDefault()
-        const newSpot = { customerName, description, rating }
+        const newReview = { customerName, description, rating }
 
         //POST 
-        fetch("http://localhost:5000/review", {
+        fetch("https://aqueous-thicket-07877.herokuapp.com/review", {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(newSpot)
+            body: JSON.stringify(newReview)
         }).then((res) => res.json())
             .then(data => {
                 if (data.acknowledged) {
-                    swal("Spot Added!", "Spot is added to the database!", "success");
+                    swal("Review Added!", "Wanna see Go to Home Page!", "success");
                     history.push('/');
                 } else {
-                    swal("Unsuccessful !", "Spot is not added to the database!", "error");
+                    swal("Unsuccessful !", "Review is not added to the database!", "error");
                 }
             })
     }
-
 
     return (
         <>

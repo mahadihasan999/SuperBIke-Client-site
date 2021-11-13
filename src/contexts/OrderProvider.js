@@ -7,11 +7,11 @@ const OrderProvider = ({ children }) => {
     const [order, setOrder] = useState([]);
 
     // add order function 
-    const handleOrder = (spot) => {
+    const handleOrder = (product) => {
         setOrder((prevValue) => {
             return [
                 ...prevValue,
-                spot,
+                product,
             ]
         })
     }

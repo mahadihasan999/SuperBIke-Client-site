@@ -13,7 +13,7 @@ const MakeAdmin = () => {
     const handleAdminSubmit = e => {
         console.log(email)
         const user = { email };
-        fetch('http://localhost:5000/users/dashboard', {
+        fetch('https://aqueous-thicket-07877.herokuapp.com/users/dashboard', {
             method: 'PUT',
             headers: {
                 'authorization': `Bearer ${token}`,

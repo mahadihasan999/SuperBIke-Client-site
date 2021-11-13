@@ -36,7 +36,7 @@ const SideNav = () => {
     const menux =
         [
             // { id: 1, text: 'Dashboard', to: "/dashboard },
-            { id: 1, text: 'Pay', to: "dashboard/pay" },
+            { id: 1, text: 'Pay', to: "/dashboard/pay" },
             { id: 2, text: 'My Order', to: "/dashboard/manage-my-order" },
             { id: 3, text: 'Add Review', to: "/dashboard/addReview" },
 
@@ -139,7 +139,7 @@ const SideNav = () => {
                                 </ul>
                             </div>
 
-
+                            <FiLogOut className="cursor-pointer w-6 h-6 text-white-700 ml-9 mt-10" onClick={signOutUser} />
 
                         </nav>
                     }

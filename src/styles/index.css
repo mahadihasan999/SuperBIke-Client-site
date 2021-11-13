@@ -12,7 +12,7 @@ body::-webkit-scrollbar {
 
 .header-banner {
   background-image: url('../assets/bannerbackground.jpg');
-  height: 600px !important;
+  height: 800px !important;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -27,19 +27,19 @@ body::-webkit-scrollbar {
   font-family: 'Poppins', sans-serif;
 }
 .bg-primary {
-  background: #d02f2f
+  background: #ea611b
 ;
 }
 .bg-primary-dark {
-  background: #d02f2f
+  background: #ea611b
   ;
 }
 .text-primary {
-  color: #d02f2f
+  color: #ea611b
 ;
 }
 .border-primary {
-  border: 1px solid #d02f2f
+  border: 1px solid #ea611b
 ;
 }
 

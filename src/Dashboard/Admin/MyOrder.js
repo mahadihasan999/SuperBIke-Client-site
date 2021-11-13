@@ -8,16 +8,18 @@ import swal from 'sweetalert';
 import useOrder from '../../hooks/useOrder'
 import Heading from './Heading';
 import useAuth from '../../hooks/useAuth';
+import { useState } from 'react';
 const MyOrder = () => {
 
     const [orders, setOrder] = useOrder()
     const { user } = useAuth();
+    const [status, setStatus] = useState()
     //handle delete 
 
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure want to Delete')
         if (proceed) {
-            const url = `http://localhost:5000/orders/${id}`;
+            const url = `https://aqueous-thicket-07877.herokuapp.com/orders/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })
@@ -30,9 +32,27 @@ const MyOrder = () => {
                 })
         }
 
-
-
     }
+
+    const handleUpdate = (id) => {
+        const newStatus = { status: 'Pending' }
+        setStatus(newStatus);
+        fetch(`https://aqueous-thicket-07877.herokuapp.com/orders/${id}`, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(status)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCout) {
+                    swal("success", "Update Successfully!", "success");
+                }
+            })
+    }
+
+
     return (
         <div>
             {/* heading   */}
@@ -89,9 +109,10 @@ const MyOrder = () => {
                                             </td>
                                             <td className="px-6 py-4 whitespace-nowrap flex flex-col h-24 items-center justify-center">
                                                 <div className="flex items-center justify-center space-x-3">
-                                                    <Link to={`/dashboard/edit/${item._id}`}>
-                                                        <FiEdit className="cursor-pointer text-2xl text-green-600" />
-                                                    </Link>
+                                                    {/* <Link to={`/dashboard/edit/${item._id}`}>
+                                                       
+                                                    </Link> */}
+                                                    <FiEdit className="cursor-pointer text-2xl text-green-600" onClick={() => handleUpdate(item._id)} />
                                                     <AiOutlineDelete className="cursor-pointer text-2xl text-red-600" onClick={() => handleDelete(item._id)} />
                                                 </div>
                                             </td>

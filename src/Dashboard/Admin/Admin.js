@@ -3,7 +3,7 @@ import { BrowserRouter, Switch } from 'react-router-dom';
 import AuthProvider from '../../contexts/AuthProvider';
 import PrivateRoute from '../../routes/PrivateRoute';
 import ShowAddedProduct from '../../Dashboard/Admin/ShowAddedProduct';
-import EditTourismDisplay from '../../Dashboard/Admin/EditTourismDisplay';
+import UpdateProduct from '../../Dashboard/Admin/UpdateProduct';
 import ManageProdcuts from './ManageProdcuts';
 import MyOrder from '../../Dashboard/Admin/MyOrder';
 import SideNav from '../../Dashboard/Drawer/SideNav';
@@ -21,26 +21,26 @@ const Admin = () => {
                     </div>
                     <div className="col-span-4 my-24 px-6">
                         <Switch>
-                            <PrivateRoute exact path="dashboard/manage-my-order">
+                            <PrivateRoute path="/dashboard/manage-my-order">
                                 <MyOrder></MyOrder>
                             </PrivateRoute>
-                            <PrivateRoute exact path="/dashboard/pay">
+                            <PrivateRoute path="/dashboard/pay">
                                 <Payment></Payment>
                             </PrivateRoute>
-                            <PrivateRoute exact path="/dashboard/manage-products">
+                            <PrivateRoute path="/dashboard/manage-products">
                                 <ManageProdcuts />
                             </PrivateRoute>
-                            <PrivateRoute exact path="/dashboard/add">
+                            <PrivateRoute path="/dashboard/add">
                                 <ShowAddedProduct />
                             </PrivateRoute>
-                            <PrivateRoute exact path="/dashboard/addReview">
+                            <PrivateRoute path="/dashboard/addReview">
                                 <ShowReview />
                             </PrivateRoute>
                             <PrivateRoute path="/dashboard/makeAdmin">
                                 <MakeAdmin />
                             </PrivateRoute>
-                            <PrivateRoute exact path="/dashboard/edit/:id">
-                                <EditTourismDisplay />
+                            <PrivateRoute path="/dashboard/edit/:id">
+                                <UpdateProduct />
                             </PrivateRoute>
                         </Switch>
                     </div>

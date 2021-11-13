@@ -7,12 +7,12 @@ import DeliveryProvider from './contexts/DeliveryProvider';
 import OrderProvider from './contexts/OrderProvider';
 import PrivateRoute from './routes/PrivateRoute';
 import PublicRoute from './routes/PublicRoute';
-import ErrorScreen from './DisplayView/ErrorScreen';
-import ProductsDetails from './DisplayView/ProductsDetails';
-import HomeScreen from './DisplayView/HomeScreen';
-import OrderSuccessfulScreen from './DisplayView/OrderSuccessfulScreen';
-import SignIn from './DisplayView/SignIn';
-import Register from './DisplayView/Register';
+import ErrorScreen from './Display/ErrorScreen';
+import ProductsDetails from './Display/ProductsDetails';
+import HomeScreen from './Display/HomeScreen';
+import OrderSuccessfulScreen from './Display/OrderSuccessfulScreen';
+import SignIn from './Display/SignIn';
+import Register from './Display/Register';
 import MyOrder from './Dashboard/Admin/MyOrder';
 import Explore from './components/ExploreAllProduct/Explore';
 
@@ -34,7 +34,7 @@ const App = () => {
                 <Admin />
               </PrivateRoute>
               <PrivateRoute exact path="/myOrder"><MyOrder /></PrivateRoute>
-              <Route path="*"><ErrorScreen /></Route>
+              <Route exact path="*"><ErrorScreen /></Route>
             </Switch>
           </DeliveryProvider>
         </OrderProvider>

@@ -1,6 +1,6 @@
 
 import { AiOutlineDelete } from 'react-icons/ai';
-import { FcApproval, FcDisapprove } from 'react-icons/fc';
+import { FcApproval } from 'react-icons/fc';
 import { FiEdit } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 // eslint-disable-next-line no-unused-vars
@@ -15,7 +15,7 @@ const ManageProdcuts = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure want to Delete')
         if (proceed) {
-            const url = `http://localhost:5000/orders/${id}`;
+            const url = `https://aqueous-thicket-07877.herokuapp.com/orders/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })
@@ -32,7 +32,7 @@ const ManageProdcuts = () => {
     const handleRoute = () => {
         history.push('/add/manage-product');
 
-        swal("Success", "User Approve", "Approval")
+        swal("success", "User Approve", "success")
     }
     return (
         <div>
