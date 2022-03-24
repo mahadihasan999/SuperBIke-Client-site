@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { FiLogOut } from 'react-icons/fi';
-import { NavLink, useHistory, Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import useAuth from '../../hooks/useAuth';
 
@@ -49,7 +48,7 @@ const Navbar = () => {
                                     />
                                 </svg>
                             </button>
-                            <button aria-label="go to cart" className="text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-gray-800">
+                            <button aria-label="go exact path cart" className="text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-gray-800">
                                 <svg className="fill-stroke" width={18} height={18} viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M3.66667 1L1 4.2V15.4C1 15.8243 1.1873 16.2313 1.5207 16.5314C1.8541 16.8314 2.30628 17 2.77778 17H15.2222C15.6937 17 16.1459 16.8314 16.4793 16.5314C16.8127 16.2313 17 15.8243 17 15.4V4.2L14.3333 1H3.66667Z" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
                                     <path d="M1 4.2002H17" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
@@ -62,16 +61,17 @@ const Navbar = () => {
                     {/* For large screens */}
                     <div className="dark:bg-gray-900 bg-gray-50 px-6 py-9">
                         <div className="container mx-auto flex items-center justify-between">
-                            <Link to="/">
-                                <span className=' rounded-r-lg  px-1.5 cursor-pointer text-gray-800  font-bold text-3xl'>SuperBike .</span>
 
-                            </Link>
+                            <span onClick={() => history.push('/')} className=' rounded-r-lg  px-1.5 cursor-pointer text-gray-800  font-bold text-3xl'>SuperBike .</span>
+
 
                             <ul className="hidden w-8/12 md:flex items-center justify-center space-x-8">
                                 <li>
-                                    <Link to="/"><p className="dark:text-white text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline">
-                                        Home
-                                    </p></Link>
+                                    <div onClick={() => history.push('/')} >
+                                        <p className="cursor-pointer dark:text-white text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline">
+                                            Home
+                                        </p>
+                                    </div>
                                 </li>
                                 <li>
                                     <p className="dark:text-white text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline">
@@ -101,15 +101,25 @@ const Navbar = () => {
                                 </div>
                                 <div className="hidden lg:flex items-center space-x-4 xl:space-x-8">
 
-                                    <button aria-label="My account" className="text-gray-800 dark:hover:text-gray-300 dark:text-white focus:outline-none focus:ring-2 focus:ring-gray-800">
-                                        <svg className="fill-stroke" width={20} height={20} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <svg className="fill-stroke" width={18} height={20} viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M17 19V17C17 15.9391 16.5786 14.9217 15.8284 14.1716C15.0783 13.4214 14.0609 13 13 13H5C3.93913 13 2.92172 13.4214 2.17157 14.1716C1.42143 14.9217 1 15.9391 1 17V19" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
-                                                <path d="M9 9C11.2091 9 13 7.20914 13 5C13 2.79086 11.2091 1 9 1C6.79086 1 5 2.79086 5 5C5 7.20914 6.79086 9 9 9Z" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
-                                            </svg>
-                                        </svg>
-                                    </button>
-                                    <button aria-label="go to cart" className="text-gray-800 dark:hover:text-gray-300 dark:text-white focus:outline-none focus:ring-2 focus:ring-gray-800">
+                                    {
+                                        user.displayName ? (
+                                            <div onClick={() => history.push('/dashboard')} className="cursor-pointer  text-gray-800 dark:hover:text-gray-300 dark:text-white focus:outline-none focus:ring-2 focus:ring-gray-800">Dashboard</div>
+                                        ) :
+                                            (
+                                                <div onClick={() => history.push('/signup')} className="cursor-pointer">
+                                                    <p aria-label="My account" className="text-gray-800 dark:hover:text-gray-300 dark:text-white focus:outline-none focus:ring-2 focus:ring-gray-800">
+
+                                                        <svg className="fill-stroke" width={20} height={20} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <svg className="fill-stroke" width={18} height={20} viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M17 19V17C17 15.9391 16.5786 14.9217 15.8284 14.1716C15.0783 13.4214 14.0609 13 13 13H5C3.93913 13 2.92172 13.4214 2.17157 14.1716C1.42143 14.9217 1 15.9391 1 17V19" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
+                                                                <path d="M9 9C11.2091 9 13 7.20914 13 5C13 2.79086 11.2091 1 9 1C6.79086 1 5 2.79086 5 5C5 7.20914 6.79086 9 9 9Z" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
+                                                            </svg>
+                                                        </svg>
+                                                    </p>
+                                                </div>
+                                            )
+                                    }
+                                    <button aria-label="go exact path cart" className="text-gray-800 dark:hover:text-gray-300 dark:text-white focus:outline-none focus:ring-2 focus:ring-gray-800">
                                         <svg className="fill-stroke" width={26} height={26} viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M5 1L1 5.8V22.6C1 23.2365 1.28095 23.847 1.78105 24.2971C2.28115 24.7471 2.95942 25 3.66667 25H22.3333C23.0406 25 23.7189 24.7471 24.219 24.2971C24.719 23.847 25 23.2365 25 22.6V5.8L21 1H5Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                                             <path d="M1 5.7998H25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -223,24 +233,25 @@ const Navbar = () => {
                                                 </svg>
                                             </svg>
                                         </div>
-                                        <p onClick={() => history.push('/signup')} className="text-base">My Account</p>
+                                        <Link exact path="/signup" className="text-base cursor-pointer">My Account</Link>
                                     </a>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     )
 }
 
 export default Navbar
+
 //  {user.displayName ? (
 //                     <>
 //                         <div className="flex items-center justify-end space-x-4">
-//                             <NavLink to="/explore" className="text-white">Explore</NavLink>
-//                             <NavLink to="/dashboard" className="text-white">Dashboard</NavLink>
+//                             <Link exact path="/explore" className="text-white">Explore</Link>
+//                             <Link exact path="/dashboard" className="text-white">Dashboard</Link>
 //                             <img src={user?.photoURL} alt={user.displayName} className="w-10 h-10 rounded-full" />
 //                             <p className="poppins hidden md:block lg:block">{user.displayName}</p>
 //                             <FiLogOut className="cursor-pointer w-6 h-6 text-white-700" onClick={signOutUser} />

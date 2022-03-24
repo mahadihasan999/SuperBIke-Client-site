@@ -3,9 +3,7 @@ import Products from '../components/DisplayProducts/Products';
 import Footer from '../components/Footer/Footer';
 import Banner from '../components/Header/Banner';
 import Review from '../components/Review/Review';
-import TopBike from '../components/TopBike/TopBike';
-import Banner2 from '../components/Header/Banner2';
-import NewsLetter from '../components/NewsLetter/NewsLetter';
+
 
 const HomeScreen = () => {
     return (
@@ -15,7 +13,6 @@ const HomeScreen = () => {
             <Products />
             {/* <TopBike></TopBike> */}
             <Review excat path="/homeReview" />
-
             <Footer />
         </>
     )

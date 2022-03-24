@@ -90,6 +90,10 @@ const ProductsDetails = () => {
                                             <div className="mt-6 sm:mt-0 xl:my-10 xl:px-20 w-52 sm:w-96 xl:w-auto">
                                                 <img src={`data:image/*;base64,${product.image}`} alt="bike" />
                                             </div>
+                                            <div className="flex flex-col justify-start items-start w-full space-y-4">
+                                                <p className="text-md md:text-xl leading-normal text-gray-800 text-base ">{product.descritption}</p>
+
+                                            </div>
                                         </div>
 
                                         <div className="p-8 bg-gray-100 flex flex-col lg:w-full xl:w-3/5">

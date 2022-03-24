@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { FiLogOut } from 'react-icons/fi';
 import { MdOutlineArrowForwardIos } from 'react-icons/md';
 import { NavLink } from 'react-router-dom';
-import Button from '../../components/Form/Button';
 import useAuth from '../../hooks/useAuth';
-import Spinner from '../../Spinner/Spinner';
+
 const SideNav = () => {
     const { user, admin, signOutUser } = useAuth();
     console.log(admin)
