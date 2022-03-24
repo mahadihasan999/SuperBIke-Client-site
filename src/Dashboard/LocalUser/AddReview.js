@@ -21,7 +21,7 @@ const AddReview = () => {
         const newReview = { customerName, description, rating }
 
         //POST 
-        fetch("https://aqueous-thicket-07877.herokuapp.com/review", {
+        fetch("https://fierce-reef-43789.herokuapp.com/review", {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

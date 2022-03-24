@@ -11,7 +11,7 @@ const UpdateProductForm = () => {
     const history = useHistory();
     const { user } = useAuth();
     useEffect(() => {
-        fetch(`https://aqueous-thicket-07877.herokuapp.com/orders/${id}`)
+        fetch(`https://fierce-reef-43789.herokuapp.com/orders/${id}`)
             .then(res => res.json())
             .then(data => setUser(data));
     }, [id])
@@ -39,7 +39,7 @@ const UpdateProductForm = () => {
         const updateSpot = { bikeName, name, email, phone }
 
         //update 
-        fetch(`https://aqueous-thicket-07877.herokuapp.com/orders/${id}`, {
+        fetch(`https://fierce-reef-43789.herokuapp.com/orders/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',

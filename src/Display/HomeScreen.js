@@ -1,19 +1,21 @@
 import React from 'react';
-import AboutUs from '../components/About/AboutUs';
 import Products from '../components/DisplayProducts/Products';
 import Footer from '../components/Footer/Footer';
 import Banner from '../components/Header/Banner';
-import Subscribe from '../components/Subscribe/Subscribe';
 import Review from '../components/Review/Review';
+import TopBike from '../components/TopBike/TopBike';
+import Banner2 from '../components/Header/Banner2';
+import NewsLetter from '../components/NewsLetter/NewsLetter';
 
 const HomeScreen = () => {
     return (
         <>
+            {/* <Banner2></Banner2> */}
             <Banner />
             <Products />
-            <AboutUs />
+            {/* <TopBike></TopBike> */}
             <Review excat path="/homeReview" />
-            <Subscribe />
+
             <Footer />
         </>
     )

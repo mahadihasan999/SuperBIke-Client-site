@@ -19,7 +19,7 @@ const MyOrder = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure want to Delete')
         if (proceed) {
-            const url = `https://aqueous-thicket-07877.herokuapp.com/orders/${id}`;
+            const url = `https://fierce-reef-43789.herokuapp.com/orders/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })
@@ -37,7 +37,7 @@ const MyOrder = () => {
     const handleUpdate = (id) => {
         const newStatus = { status: 'Pending' }
         setStatus(newStatus);
-        fetch(`https://aqueous-thicket-07877.herokuapp.com/orders/${id}`, {
+        fetch(`https://fierce-reef-43789.herokuapp.com/orders/${id}`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'

@@ -3,9 +3,19 @@ import '../Spinner/Spinner.css'
 const Spinner = () => {
     return (
         <div>
-            <div class="flex items-center justify-center mt-10 ">
-                <div class="w-24 h-24 border-l-2 border-gray-900 rounded-full animate-spin"></div>
+
+            <div className="logo_wrapper">
+                <div className="loading">
+                    <div class="ball"></div>
+                    <div class="ball"></div>
+                    <div class="ball"></div>
+                    <div class="ball"></div>
+                    <div class="ball"></div>
+                    <div class="ball"></div>
+                    <div class="ball"></div>
+                </div>
             </div>
+
         </div>
     );
 };
